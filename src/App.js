@@ -1,25 +1,29 @@
 import './App.css';
 import React from 'react'
+import { useObserver } from 'mobx-react';
 
-function App() {
+function App(props) {
 
-  const [username, setUsername] = React.useState('')
-  const [Password, setPass] = React.useState('')
+  const print = () => {
 
-  return (
+    alert(props.store.validationMessage())
 
 
+  };
+
+
+  return useObserver(() => (
     <div className="App">
       <h1>Login</h1>
       <div>
         Username<br />
-        <input value={username} onChange={(e) => setUsername(e.target.value)} /><br />
+        <input onChange={(e) => { props.store.username = e.target.value }} /><br />
     			Password<br />
-        <input value={Password} onChange={(e) => setPass(e.target.value)} />
+        <input onChange={(e) => props.store.password = e.target.value} />
 
         <hr />
         <button
-
+          onClick={() => { print() }}
         >
           Login
     			</button>
@@ -27,7 +31,7 @@ function App() {
       </div>
 
     </div>
-  );
+  ))
 }
 
 export default App;
