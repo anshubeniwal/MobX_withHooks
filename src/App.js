@@ -6,7 +6,7 @@ function App(props) {
 
   const print = () => {
 
-    alert(props.store.validationMessage())
+    alert(props.store.validation())
 
 
   };
@@ -22,8 +22,10 @@ function App(props) {
         <input onChange={(e) => props.store.password = e.target.value} />
 
         <hr />
+        {/*{props.store.validationMessage}<br/>*/}
         <button
           onClick={() => { print() }}
+        //disabled={props.store.validationMessage}
         >
           Login
     			</button>
