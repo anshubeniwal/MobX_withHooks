@@ -4,10 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store/mobxStore'
+import { Provider } from 'mobx-react';
+import rootStore from './store/RootStore';
+import { BrowserRouter } from 'react-router-dom';
+
+export const StoreContext = React.createContext();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App store={store} />
+    <BrowserRouter>
+      <Provider login={rootStore.loginStore} ApiData={rootStore.ApiStore}>
+        <App />
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

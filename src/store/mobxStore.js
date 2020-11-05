@@ -36,6 +36,6 @@ class login {
 
 }
 
-var store = window.store = new login
+var store = new login
 
 export default store
